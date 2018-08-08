@@ -1,0 +1,27 @@
+#journalForm{
+   
+   background-color: white;
+}
+#journalEntry {
+    background-color: antiquewhite;
+    align-content: stretch;
+}
+
+.entryField {
+   
+    border-color: aquamarine;
+}
+
+
+
+
+.entryTitle {
+    color:chocolate;
+}
+
+
+
+
+.entryContent{
+    color: cornflowerblue;
+}
