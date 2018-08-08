@@ -6,9 +6,8 @@ const journalBuilder = Object.create(null, {
         value: () => {
             return journalData.loadJournalEntry()
                 .then((result) => {
-                    result.sort()
                     result.reverse()
-                    let string = []
+                    let string = ""
                     for (let i = 0; i < result.length; i++) {
                         const element = result[i]
                         string += journalEntry(element)
