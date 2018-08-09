@@ -33,9 +33,4 @@ journalData.editEntry = (entry, entryData) => {
 
     .then(response => response.json())
 },
-    journalData.loadSingleJournalEntry = (editId) => {
-        return fetch(`http://localhost:8088/entries/${editId}`)
-            .then(response => response.json())
-
-    }
 module.exports = journalData

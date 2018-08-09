@@ -1,16 +1,10 @@
 {
   "entries": [
     {
-      "title": "Testing",
-      "content": "kdfsdfsdfsfsdfsdfsdfdsfdsf",
-      "date": "Wed Aug 08 2018 14:13:27 GMT-0500 (Central Daylight Time)",
+      "title": "edit now works?",
+      "content": "PLEASE?",
+      "date": "Thu Aug 09 2018 11:00:38 GMT-0500 (Central Daylight Time)",
       "id": 1
-    },
-    {
-      "title": "New ",
-      "content": "This is a new one",
-      "date": "Wed Aug 08 2018 14:13:36 GMT-0500 (Central Daylight Time)",
-      "id": 2
     }
   ]
 }
