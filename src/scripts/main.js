@@ -1,6 +1,7 @@
 const FormManager = require("./JournalForm")
 const journalData = require("./DataManager")
 const journalBuilder = require("./JournalList")
+const $ = require("jquery")
 
 document.querySelector("#journalForm").innerHTML = FormManager.buildFormTemplate()
 
@@ -8,7 +9,11 @@ journalBuilder.journalLister().then(string => {
     document.querySelector("#journalEntry").innerHTML = string
 })
 
-
+function dateFunction() {
+    let d = new Date();
+    let n = d.toString();
+    return n
+}
 
 document.querySelector("#saveEntryButton").addEventListener("click", () => {
     // Get form field values
@@ -40,10 +45,37 @@ document.querySelector("#saveEntryButton").addEventListener("click", () => {
 
 document.querySelector("#journalEntry").addEventListener("click", (event) => {
     let buttonId = event.target.id
-    journalBuilder.deleter(buttonId)
-    location.reload()
+    if (buttonId.includes("edit--")) {
+        let editId = parseInt(event.target.id.split("--")[1])
+        document.querySelector("#editField").innerHTML = FormManager.buildEditForm(editId)
+
+
+        // document.querySelector("#editField").innerHTML = journalBuilder.editer(editId)
+
+
+        // journalBuilder.editer(buttonId)
+    }
+    else if (buttonId.includes("delete--")) {
+        let deleteId = parseInt(event.target.id.split("--")[1])
+        journalBuilder.deleter(deleteId)
+        location.reload()
+    }
+
 })
 
+document.querySelector("#editField").addEventListener("click", () => {
+    let buttonId = event.target.id
+    if (buttonId.includes("saveEntryButton")) {
+        let editId = parseInt(event.target.id.split("--")[1])
+        const entryData = {
+            title: document.querySelector("#editTitle").value,
+            content: document.querySelector("#editContent").value,
+            date: dateFunction()
+        }
+        journalData.editEntry(editId, entryData)
+            .then(() => {
+                location.reload()
+            })
+    }
+})
 
-var d = Date(Date.now());
-d.toString() // returns "Sun May 10 2015 19:50:08 GMT-0600 (MDT)"

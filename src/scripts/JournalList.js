@@ -1,5 +1,6 @@
 const journalEntry = require("./JournalLayout")
 const journalData = require("./DataManager")
+const FormManager = require("./JournalForm")
 
 const journalBuilder = Object.create(null, {
     journalLister: {
@@ -24,6 +25,17 @@ const journalBuilder = Object.create(null, {
     reloadEntries: {
         value: () => {
             document.querySelector("#journalEntry").value = ""
+        }
+    },
+    editer: {
+        value: (editId) => {
+            return journalData.loadSingleJournalEntry(editId)
+                .then((result) => {
+                    let editForm = ""
+                    editForm += FormManager.buildEditForm(result)
+                    return editForm
+                }
+                )
         }
     }
 })
